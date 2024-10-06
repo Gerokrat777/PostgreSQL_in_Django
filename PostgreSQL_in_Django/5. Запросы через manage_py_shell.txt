@@ -1,0 +1,29 @@
+(.venv) PS C:\Users\user\Urban_Classes\ChetinSergey\M19-Django\UrbanDjango> py manage.py shell       
+Python 3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from task1.models import User
+>>> User.objects.all()
+<QuerySet [<User: Sergey@gmail.com>, <User: Dmitriy@mail.ru>, <User: Polina@gmail.com>]>
+>>> User.objects.get(id=2)
+<User: Dmitriy@mail.ru>
+>>> User.objects.create(e_mail='Maria@mail.ru', age=10)
+<User: Maria@mail.ru>
+>>> User.objects.all()                                  
+<QuerySet [<User: Sergey@gmail.com>, <User: Dmitriy@mail.ru>, <User: Polina@gmail.com>, <User: Maria@
+mail.ru>]>
+>>> User.objects.delete(id=2) 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Manager' object has no attribute 'delete'
+>>> Dima = User.objects.get(id=2) 
+>>> Dima.delete()
+(1, {'task1.User': 1})
+>>> User.objects.all()      
+<QuerySet [<User: Sergey@gmail.com>, <User: Polina@gmail.com>, <User: Maria@mail.ru>]>
+>>> User.objects.filter(age=10)
+<QuerySet [<User: Maria@mail.ru>]>
+>>> User.objects.count()     
+3
+>>> exit()
+(.venv) PS C:\Users\user\Urban_Classes\ChetinSergey\M19-Django\UrbanDjango> 
